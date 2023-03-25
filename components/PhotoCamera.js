@@ -15,7 +15,7 @@ export default function PhotoCamera({ newPhoto, camera }) {
   if (!status.granted) {
     return (
       <View style={styles.container}>
-        <Text style={styles.textCamera}>allow the use of the camera</Text>
+        <Text style={styles.textCamera}>Allow the use of the camera</Text>
         <TouchableOpacity onPress={requestPermission} title="Yes" />
       </View>
     );
@@ -29,11 +29,14 @@ export default function PhotoCamera({ newPhoto, camera }) {
 
   return (
     <View style={styles.container}>
-      <Camera style={styles.camera} type={type} ref={camera}>
-        <TouchableOpacity style={styles.cameraIcon} onPress={newPhoto}>
-          <Fontisto name="camera" size={24} color="#fff" />
-        </TouchableOpacity>
-      </Camera>
+      <View style={styles.cameraBox}>
+        <Camera style={styles.camera} type={type} ref={camera}>
+          <TouchableOpacity style={styles.cameraIcon} onPress={newPhoto}>
+            <Fontisto name="camera" size={24} color="#fff" />
+          </TouchableOpacity>
+        </Camera>
+      </View>
+
       <TouchableOpacity
         style={styles.toggleCameraType}
         onPress={toggleCameraType}
@@ -54,11 +57,18 @@ const styles = StyleSheet.create({
     marginBottom: 30,
     fontSize: 20,
   },
+  cameraBox: {
+    height: 240,
+    width: "100%",
+    overflow: "hidden",
+    borderRadius: 8,
+  },
   camera: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 8,
+    width: "100%",
+    height: 240,
   },
   cameraIcon: {
     justifyContent: "center",
