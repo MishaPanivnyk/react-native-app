@@ -9,7 +9,7 @@ import {
   Keyboard,
   Dimensions,
 } from "react-native";
-import { colors } from "../helpers/colors";
+import { colors } from "../../helpers/colors";
 
 const initialState = {
   login: "",
