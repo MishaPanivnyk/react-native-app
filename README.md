@@ -13,3 +13,5 @@
 # Homework_3:
 
 ![Снимок экрана 2023-03-18 203515](https://user-images.githubusercontent.com/88387140/226129378-93be6b30-42a4-4502-adad-e682f51ad224.jpg)
+# Homework_4:
+![homework_4](https://user-images.githubusercontent.com/88387140/227721930-ec577438-b23c-4bd4-b7d3-8b3bfa1e569b.jpg)
