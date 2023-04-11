@@ -17,3 +17,7 @@
 # Homework_5:
 
 ![homework_5](https://user-images.githubusercontent.com/88387140/227723644-22723a47-57f6-407f-ad74-e58626f534b4.jpg)
+
+# Homework_6:
+
+![Снимок экрана 2023-04-11 162654](https://user-images.githubusercontent.com/88387140/231177518-dd99da93-1483-4e2a-8dc9-cd72ac5a95de.jpg)
