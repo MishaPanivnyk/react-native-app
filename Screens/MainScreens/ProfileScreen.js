@@ -1,137 +1,79 @@
-import React, { useEffect, useState } from "react";
-import { Ionicons, AntDesign } from "@expo/vector-icons";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Dimensions,
-  ImageBackground,
-  Image,
-  Platform,
-  KeyboardAvoidingView,
-  FlatList,
-} from "react-native";
-import { colors } from "../../helpers/colors";
-import Post from "../../components/Post";
+import { Text, View, StyleSheet, Button,FlatList,Image,TouchableOpacity } from "react-native";
+import { authSignOutUser } from "../../redux/auth/authOperations";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect,useState } from "react";
+import db from "../../firebase/config";
 
-export default function ProfileScreen({ route, navigation }) {
-  const [posts, setPosts] = useState([]);
+export const ProfileScreen = () => {
+ const[userPosts,setUserPosts]=useState([])
+  useEffect(() => {getUserPosts()}, []);
 
-  useEffect(() => {
-    if (route.params) {
-      setPosts((prevState) => [...prevState, route.params]);
-    }
-  }, [route.params]);
-
+  const dispatch = useDispatch();
+  const { userId } = useSelector((state) => state.auth);
+  const getUserPosts = async () => {
+    await db
+      .firestore()
+      .collection("posts")
+      .where("userId", "==", userId)
+      .onSnapshot((data) =>
+        setUserPosts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+      );
+  };
+  const signOut = () => {
+    dispatch(authSignOutUser());
+  };
   return (
     <View style={styles.container}>
-      <ImageBackground
-        style={styles.bgImage}
-        source={require("../../assets/images/bg_image.jpg")}
-      >
-        <KeyboardAvoidingView
-          behavior={Platform.OS === "ios" ? "padding" : "height"}
-          keyboardVerticalOffset={-100}
-        >
-          <View style={styles.profileContainer}>
-            <Ionicons
-              name="exit-outline"
-              size={24}
-              color={colors.textColor}
-              style={styles.logoutIcon}
-              onPress={() => {}}
+            <TouchableOpacity onPress={signOut} style={styles.btnExit}>
+        <Text>SING OUT</Text>
+      </TouchableOpacity>
+          <FlatList
+        data={userPosts}
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => (
+          <View
+            style={{
+              marginBottom: 10,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Image
+              source={{ uri: item.photo }}
+              style={{ marginHorizontal: 15, height: 240, width: 340 }}
             />
-            <View style={styles.avatarBox}>
-              <Image
-                style={styles.userImage}
-                source={require("../../assets/images/imageProf.jpg")}
-              />
-              <TouchableOpacity style={styles.btnAddUserImage}>
-                <AntDesign name="plus" size={13} color={colors.textColor} />
-              </TouchableOpacity>
+              <View>
+              <Text style={styles.photoTitle}>{item.comment}</Text>
             </View>
 
-            <Text style={styles.title}>Misha Panivnyk</Text>
-
-            <FlatList
-              data={posts}
-              keyExtractor={(item, index) => index.toString()}
-              renderItem={({ item }) => (
-                <Post
-                  photo={item.photo}
-                  name={item.name}
-                  comments={10}
-                  likes={item.likes}
-                  location={item.location}
-                  toComment={() => navigation.navigate("Comments", { item })}
-                  toMap={() => navigation.navigate("Map", { item })}
-                />
-              )}
-            />
           </View>
-        </KeyboardAvoidingView>
-      </ImageBackground>
+        )}
+      />
     </View>
   );
-}
-
+};
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
-  },
-  bgImage: {
-    flex: 1,
-    resizeMode: "cover",
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
-  },
-  profileContainer: {
-    position: "relative",
-    alignItems: "flex-end",
-    marginTop: 103,
-    backgroundColor: colors.white,
-    borderTopLeftRadius: 25,
-    borderTopRightRadius: 25,
-    width: "100%",
-    height: "100%",
-  },
-  logoutIcon: {
-    marginTop: 22,
-    marginHorizontal: 16,
-  },
-  avatarBox: {
-    position: "absolute",
-    width: 120,
-    height: 120,
-    top: -60,
-    right: Dimensions.get("window").width / 2 - 60,
-  },
-  userImage: {
-    borderRadius: 16,
-    backgroundColor: colors.background,
-  },
-  btnAddUserImage: {
-    position: "absolute",
-    transform: [{ rotate: "-45deg" }],
-    bottom: 14,
-    right: -12.5,
-    width: 25,
-    height: 25,
-    alignItems: "center",
     justifyContent: "center",
-    borderRadius: 12.5,
-    borderWidth: 1,
-    borderColor: colors.borderColor,
-    backgroundColor: colors.white,
+    alignItems: "center",
   },
-  title: {
-    marginTop: 46,
-    fontSize: 30,
-    color: colors.black,
-    fontFamily: "Roboto-Medium",
-    lineHeight: 35,
-    alignSelf: "center",
+  
+  btnExit: {
+    backgroundColor: "#FF6C00",
+    height: 30,
+    justifyContent: "center",
+    alignItems: "center",
+    fontFamily: "roboto",
+    marginBottom: 10,
+    marginTop: 50,
+    minWidth:400,
   },
+  photoTitle: {
+    textTransform: "uppercase",
+    marginTop: 10,
+    
+   }
 });
+
+export default ProfileScreen;

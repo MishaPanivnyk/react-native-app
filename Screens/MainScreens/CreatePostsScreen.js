@@ -1,212 +1,167 @@
-import React, { useState, useEffect } from "react";
-import { SimpleLineIcons, AntDesign } from "@expo/vector-icons";
-import { Input } from "react-native-elements";
-import * as Location from "expo-location";
 import {
-  View,
   Text,
   StyleSheet,
-  Image,
+  View,
   TouchableOpacity,
-  TouchableWithoutFeedback,
-  Keyboard,
+  Image,
+  TextInput,
 } from "react-native";
-import { colors } from "../../helpers/colors";
-import PhotoCamera from "../../components/PhotoCamera";
+import { Camera } from "expo-camera";
+import { useState,useEffect } from "react";
+import * as Location from "expo-location";
+import db from "../../firebase/config";
+import { nanoid } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
+import { Feather } from "@expo/vector-icons";
 
-const initialState = {
-  photo: null,
-  name: "",
-  location: "",
-  coords: null,
-};
 
-export default function CreatePostsScreen({ navigation }) {
-  const [state, setState] = useState(initialState);
-  const [cameraRef, setCameraRef] = useState(null);
+export const CreatePostsScreen = ({ navigation }) => {
+  const [camera, setCamera] = useState(null);
+  const [photo, setPhoto] = useState(null);
+  const [comment, setComment] = useState('');
+  const [location, setLocation] = useState(null);
+ const {userId,nickname}=useSelector((state)=>state.auth)
 
-  useEffect(() => {
+    useEffect(() => {
     (async () => {
-      //запит на дозвіл використання геолокації
       let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
+         if (status !== 'granted') {
+       console.log('Permission to access location was denied')
         return;
       }
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
     })();
   }, []);
 
-  const takePhoto = async () => {
-    const { uri } = await cameraRef.takePictureAsync();
+  const takePicture = async () => {
+    const { uri } = await camera.takePictureAsync();
     const location = await Location.getCurrentPositionAsync();
-    const coords = {
-      latitude: location.coords.latitude,
-      longitude: location.coords.longitude,
-    };
-    setState((prevState) => ({
-      ...prevState,
-      photo: uri,
-      coords,
-    }));
-  };
+    setPhoto(uri);
 
+  };
   const sendPhoto = () => {
-    navigation.navigate("DefaultScreen", state);
-    setState(initialState);
+    uploadPostToServer();
+    navigation.navigate("Публикации");
+ 
   };
 
-  const clearForm = () => {
-    setState(initialState);
+  const uploadPostToServer = async () => {
+      const photo = await uploadPhotoToServer();
+    const createPost = await db.firestore().collection('posts').add({
+      photo,comment,location:location.coords,userId,nickname
+    })
+  }
+
+  const uploadPhotoToServer = async () => {
+    const response = await fetch(photo);
+    const file = await response.blob();
+
+    const uniquePostId = nanoid();
+
+    await db.storage().ref(`postImage/${uniquePostId}`).put(file);
+    const processesPhoto = await db
+      .storage()
+      .ref("postImage")
+      .child(uniquePostId)
+      .getDownloadURL();
+    return processesPhoto;
   };
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
-        <View style={styles.photoContainer}>
-          {state.photo ? (
+    <View style={styles.container}>
+      <Camera style={styles.camera} ref={setCamera}>
+        {photo && (
+          <View style={styles.takePhotoContainer}>
             <Image
-              style={styles.photo}
-              onPress={Keyboard.dismiss}
-              source={{ uri: state.photo }}
+              source={{ uri: photo }}
+              style={{ width: 120, height: 120 }}
             />
-          ) : (
-            <PhotoCamera newPhoto={takePhoto} camera={setCameraRef} />
-          )}
-        </View>
-
-        <TouchableOpacity>
-          {state.photo ? (
-            <View>
-              <Text
-                onPress={() => {
-                  setState((prevState) => ({
-                    ...prevState,
-                    photo: null,
-                  }));
-                }}
-                style={styles.subTitle}
-              >
-                Change photo
-              </Text>
-            </View>
-          ) : (
-            <View>
-              <Text onPress={() => {}} style={styles.subTitle}>
-                Upload photo
-              </Text>
-            </View>
-          )}
+          </View>
+        )}
+        <TouchableOpacity onPress={takePicture} style={styles.photo} >
+         <Feather name="camera" size={32} color="black"  />
         </TouchableOpacity>
 
-        <View style={styles.form}>
-          <Input
-            style={{ ...styles.input, fontFamily: "Roboto-Medium" }}
-            placeholder="Name..."
-            placeholderTextColor={colors.textColor}
-            value={state.name}
-            onChangeText={(value) =>
-              setState((prevState) => ({ ...prevState, name: value }))
-            }
-          />
-          <Input
-            leftIcon={
-              <SimpleLineIcons
-                name="location-pin"
-                size={24}
-                color={colors.textColor}
-                style={{ marginRight: 4 }}
-              />
-            }
-            style={{ ...styles.input, fontFamily: "Roboto-Regular" }}
-            placeholder="Location..."
-            placeholderTextColor={colors.textColor}
-            value={state.location}
-            onChangeText={(value) =>
-              setState((prevState) => ({ ...prevState, location: value }))
-            }
-          />
-
-          <TouchableOpacity
-            style={{
-              ...styles.button,
-              backgroundColor: state.photo ? colors.orange : colors.background,
-            }}
-            onPress={sendPhoto}
-          >
-            <Text
-              style={{
-                ...styles.buttonText,
-                color: state.photo ? colors.white : colors.textColor,
-              }}
-            >
-              Publish
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <TouchableOpacity style={styles.deleteBtn} onPress={clearForm}>
-          <AntDesign name="delete" size={24} color={colors.textColor} />
-        </TouchableOpacity>
-      </View>
-    </TouchableWithoutFeedback>
+      </Camera>
+      <Text style={styles.downloadText}>Загрузите фото</Text>
+      <TextInput
+        style={styles.input}
+        textAlign={"left"}
+        placeholder={"Название..."}
+        placeholderTextColor={"orange"}
+        onChangeText={setComment}
+      />
+      {/* <Text>{location}</Text> */}
+      <TouchableOpacity onPress={sendPhoto} style={styles.button}>
+        <Text style={styles.btnText}>Опубликовать</Text>
+      </TouchableOpacity>
+    </View>
   );
-}
+};
+
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: "#E5E5E5",
   },
-  photoContainer: {
+  camera: {
+    height: 300,
     marginHorizontal: 16,
-    height: 240,
+    marginTop: 104,
+    alignItems: "center",
+    justifyContent: 'center',
+ 
+ 
   },
-  photo: {
-    width: "100%",
-    height: "100%",
-    borderColor: colors.borderColor,
-    backgroundColor: colors.background,
-    borderWidth: 1,
-    borderRadius: 8,
-  },
-  subTitle: {
-    color: colors.textColor,
-    fontSize: 16,
-    marginHorizontal: 16,
+  photo:{  width: 60,
+    height: 50,
+    backgroundColor: "rgba(200, 195, 196, 0.37)",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 50,},
+ 
+  downloadText: {
     marginTop: 8,
-  },
-  form: {
     marginHorizontal: 16,
-    marginTop: 16,
+    color: "#BDBDBD",
   },
-  input: {
-    marginTop: 16,
-    paddingTop: 16,
-    paddingLeft: 0,
-    paddingBottom: 15,
-    fontSize: 16,
-    borderBottomColor: colors.textColor,
-    color: colors.black,
+  takePhotoContainer: {
+    position: "absolute",
+    top: 10,
+    left: 10,
+    borderColor: "#ffffff",
+    borderWidth: 1,
   },
   button: {
-    borderRadius: 100,
-    padding: 16,
-    marginTop: 32,
-    justifyContent: "center",
+    backgroundColor: "#F6F6F6",
     alignItems: "center",
-    color: colors.black,
+    justifyContent: "center",
+    borderRadius: 100,
+    marginTop: 150,
+    borderWidth: 1,
+    borderColor: "transparent",
+
+    height: 51,
+    marginHorizontal: 16,
   },
-  buttonText: {
-    fontFamily: "Roboto-Regular",
+  btnText: {
+    color: "orange",
     fontSize: 16,
   },
-  deleteBtn: {
-    alignSelf: "center",
-    width: 70,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: colors.background,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 100,
+  input: {
+    borderBottomWidth: 2,
+    height: 50,
+
+    marginHorizontal: 16,
+    borderColor: "orange",
+    padding: 16,
+    paddingLeft: 0,
+    color: "black",
+    marginTop: 32,
   },
 });
+
+export default CreatePostsScreen;
+

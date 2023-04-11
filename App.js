@@ -1,20 +1,49 @@
-import React from "react";
-import { useFonts } from "expo-font";
-import { NavigationContainer } from "@react-navigation/native";
-import { useRoute } from "./router";
+
+
+import { useState, useEffect, useCallback } from "react";
+
+
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+
+import * as Font from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+
+import Home from "./Screens/Home";
+import { View,Text } from "react-native";
+
+// SplashScreen.preventAutoHideAsync();
 
 export default function App() {
-  const routing = useRoute(true);
-  const [fontsLoaded] = useFonts({
-    "Roboto-Regular": require("./assets/fonts/Roboto-Regular.ttf"), //400
-    "Roboto-Medium": require("./assets/fonts/Roboto-Medium.ttf"), //500
-    "Roboto-Bold": require("./assets/fonts/Roboto-Bold.ttf"), //700
-    "SFP-Light": require("./assets/fonts/SFProDisplay-Light.ttf"), //300
-    "SFP-Regular": require("./assets/fonts/SFProDisplay-Regular.ttf"), //400
-  });
-  if (!fontsLoaded) {
-    return null;
-  }
+  // const [isReady, setIsReady] = useState(false);
+  // useEffect(() => {
+  //   async function prepare() {
+  //     try {
+  //       await Font.loadAsync({
+  //         roboto: require("./assets/fonts/Roboto-Regular.ttf"),
+  //       });
+  //     } catch (error) {
+  //       console.warn(error);
+  //     } finally {
+  //       setIsReady(true);
+  //     }
+  //   }
+  //   prepare();
+  // }, []);
 
-  return <NavigationContainer>{routing}</NavigationContainer>;
+ 
+  // const onLayoutRootView = useCallback(async () => {
+  //   if (isReady) {
+  //     await SplashScreen.hideAsync();
+  //   }
+  // }, [isReady]);
+
+  // if (!isReady) {
+  //   return null;
+  // }
+  return (
+    <Provider store={store}>
+    <Home /> 
+      </Provider>
+  );
 }

@@ -1,99 +1,72 @@
-import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { Ionicons, Feather, AntDesign } from "@expo/vector-icons";
-import { colors } from "./helpers/colors";
-
-import RegistrationScreen from "./Screens/Auth/RegistrationScreen";
-import LoginScreen from "./Screens/Auth/LoginScreen";
-import ProfileScreen from "./Screens/MainScreens/ProfileScreen";
-import CreatePostsScreen from "./Screens/MainScreens/CreatePostsScreen";
+import LoginScreen from "./Screens/LoginScreen";
+import RegistrationScreen from "./Screens/RegistrationScreen";
 import PostsScreen from "./Screens/MainScreens/PostsScreen";
+import CreatePostsScreen from "./Screens/MainScreens/CreatePostsScreen";
+import ProfileScreen from "./Screens/MainScreens/ProfileScreen";
 
-const AuthStack = createStackNavigator();
-const MainTab = createBottomTabNavigator();
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
+
+const Stack = createStackNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 export const useRoute = (isAuth) => {
   if (!isAuth) {
     return (
-      <AuthStack.Navigator initialRouteName="Register">
-        <AuthStack.Screen
-          options={{ headerShown: false }}
+      <Stack.Navigator>
+        <Stack.Screen
           name="Login"
+          options={{ headerShown: false }}
           component={LoginScreen}
         />
-        <AuthStack.Screen
+        <Stack.Screen
+          name="Registration"
           options={{ headerShown: false }}
-          name="Register"
           component={RegistrationScreen}
         />
-      </AuthStack.Navigator>
+      </Stack.Navigator>
     );
   }
   return (
-    <MainTab.Navigator
-      initialRouteName="Posts"
-      screenOptions={{
-        tabBarShowLabel: false,
-        headerTitleAlign: "center",
-        headerTitleStyle: {
-          fontFamily: "Roboto-Medium",
-          fontSize: 17,
-          lineHeight: 22,
-          color: colors.black,
-        },
-      }}
-    >
-      <MainTab.Screen
+    <Tab.Navigator labeled={false} barStyle={{ backgroundColor: '#ffffff' }}
+      screenOptions={{tabBarColor: 'red'} } >
+      <Tab.Screen
+    options={{
+          tabBarIcon: ({ focused, size, color }) => (
+            <MaterialCommunityIcons
+              name="postage-stamp"
+              size={24}
+              color={color}
+            />
+          ),
+        }}
         name="Posts"
         component={PostsScreen}
-        options={{
-          title: "Posts",
-          tabBarIcon: ({ focused, color, size }) => (
-            <AntDesign name="appstore-o" size={24} color={colors.iconColor} />
-          ),
-          headerRight: () => (
-            <Ionicons
-              onPress={() => {}}
-              name="exit-outline"
-              size={24}
-              style={{ marginRight: 16 }}
-              color={colors.textColor}
-            />
+  
+      />
+      <Tab.Screen
+      options={{
+          tabBarIcon: ({ focused, size, color }) => (
+            <AntDesign name="pluscircleo" size={24} color={color} />
           ),
         }}
-      />
-      <MainTab.Screen
-        name="Create"
+        name="CreatePosts"
         component={CreatePostsScreen}
-        options={({ navigation }) => ({
-          title: "Create post",
-          tabBarStyle: { display: "none" },
-          tabBarIcon: ({ focused, color, size }) => (
-            <AntDesign name="plus" size={24} color={colors.iconColor} />
-          ),
-          headerLeft: () => (
-            <Ionicons
-              onPress={() => navigation.navigate("Posts")}
-              name="arrow-back"
-              size={24}
-              color={colors.iconColor}
-              style={{ marginLeft: 16 }}
-            />
-          ),
-        })}
       />
-      <MainTab.Screen
+      <Tab.Screen
+      options={{
+          tabBarIcon: ({ focused, size, color }) => (
+          <AntDesign name="profile" size={24}
+            color={color} />
+          ),
+        }}
         name="Profile"
         component={ProfileScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused, color, size }) => (
-            <Feather name="user" size={24} color={colors.iconColor} />
-          ),
-        }}
       />
-    </MainTab.Navigator>
+    </Tab.Navigator>
   );
 };
