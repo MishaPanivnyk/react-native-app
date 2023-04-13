@@ -1,0 +1,130 @@
+// {"_tokenResponse": {
+//     "email": "kosh@gmail.com", 
+//     "expiresIn": "3600", 
+//     "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg3YzFlN2Y4MDAzNGJiYzgxYjhmMmRiODM3OTIxZjRiZDI4N2YxZGYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcG9zdHNhcHAtN2RlZTMiLCJhdWQiOiJwb3N0c2FwcC03ZGVlMyIsImF1dGhfdGltZSI6MTY4MDM1ODkwMCwidXNlcl9pZCI6Ik9CWXNXMWZibjBlWGFkUEluWTcwSXA0ZXlpcTIiLCJzdWIiOiJPQllzVzFmYm4wZVhhZFBJblk3MElwNGV5aXEyIiwiaWF0IjoxNjgwMzU4OTAwLCJleHAiOjE2ODAzNjI1MDAsImVtYWlsIjoia29zaEBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsia29zaEBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.FAPwq-_Ava9LLl6Yu4YYvUZ12IBYFVH_D2KhVptMijTEbYbxjdRvylg3czCevr9J6R0mPGRHthUvuCWKwMyPDVQ0ZthZcE2NFJd7eA31ewHh1Vgajm6NXdABJjF2hf0s5jnCkfUWWx_nYVdc3Higspu5oTE__W_itQLiK4k1MDeD5OWGR5xs8jdI1U_5-9AkRIyckvFdP83IQrwkRUknAwXwOfy9U89nzfyZ8pPATA4Kcb9uWDJGd1sRK4kodhg_vHsu9UB9G5yceAD8I-7yhW5mHnvOMBBrStFdmuA5qE1YJtEf5PJ5lsZFgX6N-ZPnligSX3skqipca45oswzqxg", 
+//     "kind": "identitytoolkit#SignupNewUserResponse", "localId": "OBYsW1fbn0eXadPInY70Ip4eyiq2", "refreshToken": "APJWN8dX4vNz9QfPK2rAxMgHX7NHUr6rahHlo1I15Nh-2dQZkyIKI6_elwKGoOc1IJrVFJDrATCwhFA_KhuOYWcS1qslrz1leeTdzBF4nPmU8tctyr6SnL75g3f6WJxZZoMhzkDKf4fyURVdPLCOK1rLn8F9R4R_5u_9FEG7z0NjY4Aq7FMupa1GUWeBRo517PbUyrkGhPE0jwxcFbhPrCjKnYyzp776Gg"}, 
+//     "operationType": "signIn", 
+//     "providerId": null, 
+//     "user": {"_redirectEventId": undefined, "apiKey": "AIzaSyBUD2e3txX4VwYGw2pX2z1Qux-bPvAJRgg", "appName": "[DEFAULT]", "createdAt": "1680358900699", "displayName": "Kosha", "email": "kosh@gmail.com", "emailVerified": false, "isAnonymous": false, "lastLoginAt": "1680358900699", "phoneNumber": undefined, "photoURL": undefined, "providerData": [Array], "stsTokenManager": [Object], "tenantId": undefined, "uid": "OBYsW1fbn0eXadPInY70Ip4eyiq2"}
+// } 
+
+// login
+// {"_tokenResponse": {"displayName": "Kosha", "email": "kosh@gmail.com", "expiresIn": "3600", "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg3YzFlN2Y4MDAzNGJiYzgxYjhmMmRiODM3OTIxZjRiZDI4N2YxZGYiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiS29zaGEiLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcG9zdHNhcHAtN2RlZTMiLCJhdWQiOiJwb3N0c2FwcC03ZGVlMyIsImF1dGhfdGltZSI6MTY4MDM1OTAxMiwidXNlcl9pZCI6Ik9CWXNXMWZibjBlWGFkUEluWTcwSXA0ZXlpcTIiLCJzdWIiOiJPQllzVzFmYm4wZVhhZFBJblk3MElwNGV5aXEyIiwiaWF0IjoxNjgwMzU5MDEyLCJleHAiOjE2ODAzNjI2MTIsImVtYWlsIjoia29zaEBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsia29zaEBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.SFwnstfF9V8y0vw5f5TMeUL51Al7E4arbyO8eOouinTLUHS912Dd2-hPUjw7EdCyhvw7JoGMrO0-fBvliL8_jPGyH5xQIaJqRsGNjh_n0FxOeZEd5o7hG3BZJmDoqpuoVxSaTxpj92FUfTPwSbzH_fusJHLkwmdwQUwNvvMp0r0lnFJ8c24VuChnIadwlp0DuLvvqAtX6DnJggYTz6nwDNL4j8gzh0UrmRUzz1PIECLgd0x5FCZwiiompEKp3H4WH6YnKYrAMKkXm_dsz-XJVST728sOTNl0QK0LG-_34M7cEzbv2DOIEmvLd8dHhq3lL9AuYnLMd9FwtMtPsBQppQ", "kind": "identitytoolkit#VerifyPasswordResponse", "localId": "OBYsW1fbn0eXadPInY70Ip4eyiq2", "refreshToken": "APJWN8c5nSzXWcjaEc0n2D1ctzi7iF2sDozKk3ALTEuhSr06aj11oXo4var1IzsrQTvjv5MQFWdeUMDRjorLKq13gMFjTZiT3zxAzKvNAQy3HITDz__8Z-6v1IGlctbuiQa3GC9vfAUfx0OT1tK9Uh_h5nh5nPNhhncLX6c7kFU9LM643OGgdU4UFSLV6NRnRGFCOdD6_PJQ_eJK5skugAAa1QwTZKb42A", "registered": true}, "operationType": "signIn", "providerId": null, "user": {"_redirectEventId": undefined, "apiKey": "AIzaSyBUD2e3txX4VwYGw2pX2z1Qux-bPvAJRgg", "appName": "[DEFAULT]", "createdAt": "1680358900699", "displayName": "Kosha", "email": "kosh@gmail.com", "emailVerified": false, "isAnonymous": false, "lastLoginAt": "1680358900699", "phoneNumber": undefined, "photoURL": undefined, "providerData": [Array], "stsTokenManager": [Object], 
+// "tenantId": undefined, "uid": "OBYsW1fbn0eXadPInY70Ip4eyiq2"}}
+
+
+// register
+// {"_tokenResponse": {
+//     "email": "k@gmail.com", 
+//     "expiresIn": "3600", 
+//     "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg3YzFlN2Y4MDAzNGJiYzgxYjhmMmRiODM3OTIxZjRiZDI4N2YxZGYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcG9zdHNhcHAtN2RlZTMiLCJhdWQiOiJwb3N0c2FwcC03ZGVlMyIsImF1dGhfdGltZSI6MTY4MDM1OTk2MCwidXNlcl9pZCI6InFHYWVzTXRUc0VSeDhMNTd3Y2RhemxXbUxFTzIiLCJzdWIiOiJxR2Flc010VHNFUng4TDU3d2NkYXpsV21MRU8yIiwiaWF0IjoxNjgwMzU5OTYwLCJleHAiOjE2ODAzNjM1NjAsImVtYWlsIjoia0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsia0BnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.eHOC5U-3CRvo-vuDpDxxB1TWGNgKosaZ7KvmMRSPmI6a4r-Yuyald6pYfS4-IrOcq9ksbs1iIIU0-UfXdNJfavHU8q8Ve9lMnHS_QnCOLm3-Wxis4ZUuboxkh4ua9nFlPpRrCrENyE3lUIop73n_AvxALFuWCYtvBHg5w5LIqfWJBQidzwNvWDzxAO2lIH6Fx4XpYFPDPO39D-shOJzj91R_lEGjLPglM3HZeUdX6qu31ayqIn87Qm1SFoERHuVFL82wuUy0dA7EZIryFiWLMYJZM2tsvYsCodtuH9Vdbg4WoB85yrGrBy6Ov-ez6cbIMhii8295HP5U_2K0FfZ6lQ", 
+//     "kind": "identitytoolkit#SignupNewUserResponse", 
+//     "localId": "qGaesMtTsERx8L57wcdazlWmLEO2", 
+//     "refreshToken": "APJWN8foNkuc29ETsat12sJBAxp4fWs72W792HUwJYPy8pej6ahdTWqV3d6cvK2z1Rcmq7yeElA0y5iA4l6HgmytYDnaWnhqma7c2LDkssprwBiM5-c5-lLP0SC_B7Oa5cIq7I83dQguA-NACD0vl27Hb7zFQXtq0JmaUgvV3eT3pvn4pn6DLAxIaqgTeIs-2fkj2jgq0SOE"
+// }, 
+//     "operationType": "signIn", 
+//     "providerId": null, 
+//     "user": {
+//         "_redirectEventId": undefined, 
+//         "apiKey": "AIzaSyBUD2e3txX4VwYGw2pX2z1Qux-bPvAJRgg", 
+//         "appName": "[DEFAULT]", 
+//         "createdAt": "1680359960441", 
+//         "displayName": "Kosha", 
+//         "email": "k@gmail.com", 
+//         "emailVerified": false, 
+//         "isAnonymous": false, 
+//         "lastLoginAt": "1680359960441", 
+//         "phoneNumber": undefined, 
+//         "photoURL": undefined, 
+//         "providerData": [Array], 
+//         "stsTokenManager": [Object], 
+//         "tenantId": undefined, 
+//         "uid": "qGaesMtTsERx8L57wcdazlWmLEO2"}
+// }
+
+// check user
+// {"_redirectEventId": undefined,
+//  "apiKey": "AIzaSyBUD2e3txX4VwYGw2pX2z1Qux-bPvAJRgg",
+//   "appName": "[DEFAULT]",
+//    "createdAt": "1680360225588", 
+//    "displayName": "Ko", 
+//    "email": "k@gmail.com", 
+//    "emailVerified": false, 
+//    "isAnonymous": false, 
+//    "lastLoginAt": "1680361396664", 
+//    "phoneNumber": undefined, 
+//    "photoURL": undefined, 
+//    "providerData": [[Object]], 
+//    "stsTokenManager": {
+//       "accessToken": 
+//       "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg3YzFlN2Y4MDAzNGJiYzgxYjhmMmRiODM3OTIxZjRiZDI4N2YxZGYiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiS28iLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcG9zdHNhcHAtN2RlZTMiLCJhdWQiOiJwb3N0c2FwcC03ZGVlMyIsImF1dGhfdGltZSI6MTY4MDM2MTM5NiwidXNlcl9pZCI6IndOODJWYkFjYkFPZFRMMjhKTjJxMVNraFlrcjIiLCJzdWIiOiJ3TjgyVmJBY2JBT2RUTDI4Sk4ycTFTa2hZa3IyIiwiaWF0IjoxNjgwMzYxMzk2LCJleHAiOjE2ODAzNjQ5OTYsImVtYWlsIjoia0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsia0BnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.LSOTmL_xNEb-fYR6IGOyv1ChlDPbvWSUmF5Mhjc8zBteEQwPm61kVgNEAzvFq7C3kc0d7SpAgWZ2TBsAsAms4t957FSwH6yL5wZH2XuhgHGSgEywwDUrnCdzRD2Q2S_oxoYyg044w0IzTks9vGMGwDA2xzz2mNwzvVlGuW2U3TspfvFiPBf1kS7To3z9JBUdAAlcPR9-dTku2dF_yIQOjagV9_wUlvunH3YWa5hLFIyKjlpSIxBUXnhhL7zvD76Y6v81MbIPxOko67cSOdVmq3aWWHu7nsyYY4nKgXP4xznxbDZA4mleuP1nVKAxR0z3ziTiWQY_IKiO2GYrE1y1TA", 
+//       "expirationTime": 1680364996998, 
+//       "refreshToken": "APJWN8eWePbDFHyoeFmeyXhYf1GQkzDIdfrtjg-5_Rbm3ZVXhVsPVVscWBJl0V9sgtRy6_T2pnmCkZeh46q2iyMX3D4oZxEbBumJSzpYGga05rA8s0D8rvPiM179jEnO0pxEVHInHR9icMus4NMSfegMlMdThABiuOIRGhTTNvos2BraGJEWLBZsP-sxHkEmGTSf99wrJUf2jkXYg6d47-IsFMuR5780QQ"
+//     }, 
+//    "tenantId": undefined, "uid": "wN82VbAcbAOdTL28JN2q1SkhYkr2"}
+
+
+
+
+
+// login
+// {
+//     "displayName": "Ko", 
+//     "email": "k@gmail.com", 
+//     "expiresIn": "3600", 
+//     "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg3YzFlN2Y4MDAzNGJiYzgxYjhmMmRiODM3OTIxZjRiZDI4N2YxZGYiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiS28iLCJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcG9zdHNhcHAtN2RlZTMiLCJhdWQiOiJwb3N0c2FwcC03ZGVlMyIsImF1dGhfdGltZSI6MTY4MDM2NDYzMCwidXNlcl9pZCI6IndOODJWYkFjYkFPZFRMMjhKTjJxMVNraFlrcjIiLCJzdWIiOiJ3TjgyVmJBY2JBT2RUTDI4Sk4ycTFTa2hZa3IyIiwiaWF0IjoxNjgwMzY0NjMwLCJleHAiOjE2ODAzNjgyMzAsImVtYWlsIjoia0BnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsia0BnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.hI8o-a0pvlUff1ud2EpGmG0FqaJFuU6vurojFGcpmr-9wq1AXWqMPk5nS7NHhhVEjYSpwPqv75qsZWQF47gakjbjdsxmvPzrpZ-PIEo3RgcLkMoeUFv8sHeHSdsgD_CkNMzrzZL8YJvrGHcLtJlhUZBZNKz0F-1AWJa7beIcmxTx5BVr2jDaS66tpppWek49jN11whp6fTZvYLLBBJXkAaEyeRXI4Jar7HV5BvWzIqwjOCo2Z9b_7Z_iA5YiVKBU0olVaL_JmYqHOBZPtd6qjnyYW4K3am_WM8FMPOMm_rBwGanQvUAeKPXz_Jl4dNWgTUqeNiPnFcDxb3-aoLzTjQ", 
+//     "kind": "identitytoolkit#VerifyPasswordResponse", 
+//      "localId": "wN82VbAcbAOdTL28JN2q1SkhYkr2", 
+//      "refreshToken": "APJWN8fCkVba1pJu8DNnsinTYIFAPByqI5GY5PN2sl6T4dADHFl6r9BTrygrgJQ0NBF4BbGqntnLZz0B_tfyiCzlOqfAyiQ7mM4xaz5ity-rS7ZAQCeQNkmSeSmoEgt8VRoTYe4E5CVaNEIBJWZecUyOuwZNewaNqIWkJrjlijyeUbxUKikcB_zkJmExdxh7iIerwtrZIVAKmsf-J9tL_BKocHAn_jpdSA", 
+//      "registered": true}
+//  LOG  {"error": null, 
+//  "isAuth": true, "loading": false, "name": "Ko",
+//   "uid": undefined, "user": "k@gmail.com"}
+
+
+// [
+//     {"id": "1YKCFBlGL4HcynvyPoQP", "location": {"latitude": 49.5780029, "longitude": 34.5156743}, "photo": "https://firebasestorage.googleapis.com/v0/b/postsapp-7dee3.appspot.com/o/1679864578858?alt=media&token=2bbdde72-6e65-43de-8100-63b6790e8b6d", "title": "456788899"}, 
+//     {"id": "7V2igcOecxifQxkHYyKN", "location": {"latitude": 49.5499884, "longitude": 34.5104926}, "photo": "https://firebasestorage.googleapis.com/v0/b/postsapp-7dee3.appspot.com/o/1680008556473?alt=media&token=b557edc3-09e5-4733-b976-9390cecf80a7", "title": "Шаллляяяч"}, 
+//     {"id": "Kn38rrclV4y0csSHpYlD", "location": {"latitude": 49.5499884, "longitude": 34.5104926}, "photo": "https://firebasestorage.googleapis.com/v0/b/postsapp-7dee3.appspot.com/o/1680008599305?alt=media&token=11fc3b4e-b651-4868-a5ef-b18a2766b91e", "title": "Шаллляяяч"}, 
+//     {"id": "Kxo1Cet3QIyVYKpnWAii", "location": {"latitude": 49.5499834, "longitude": 34.5104886}, "photo": "https://firebasestorage.googleapis.com/v0/b/postsapp-7dee3.appspot.com/o/1680008706367?alt=media&token=ecf57a05-71e4-4941-8dc9-f01a89470572", "title": "Галя"}, 
+//     {"id": "N2liT53FVuJXMqkzOdgW", "location": {"latitude": 49.57801, "longitude": 34.515704}, "photo": "https://firebasestorage.googleapis.com/v0/b/postsapp-7dee3.appspot.com/o/1680035379204?alt=media&token=e84f85ec-5e14-4d34-9b2b-bae1993cb984", "title": "Все готово"}, 
+//     {"id": "NKGU1z8YFeLKvJUUaZom", "location": {"latitude": 49.5499884, "longitude": 34.5104926}, "photo": "https://firebasestorage.googleapis.com/v0/b/postsapp-7dee3.appspot.com/o/1680008582544?alt=media&token=be0f1535-a2e0-4c7f-b4f0-0f8d8d4f7d6c", "title": "Шаллляяяч"}, 
+//     {"id": "cwRK7MMLmmzz2n9YwtrE", "inputRegion": "Україна, Полтава", "location": {"latitude": 49.5780313, "longitude": 34.5156803}, "photo": "https://firebasestorage.googleapis.com/v0/b/postsapp-7dee3.appspot.com/o/1680360539342?alt=media&token=370c0231-b261-48f9-8691-e14fdf0a527c", "title": "Member", "uid": "CYlL2fISpYdb5YJnROBW1DgSHZx2"}, 
+//     {"id": "ibMiSg7OqM4tBEJWuaaC", "location": {"latitude": 49.5780236, "longitude": 34.5157059}, "photo": "https://firebasestorage.googleapis.com/v0/b/postsapp-7dee3.appspot.com/o/1679864822170?alt=media&token=986568c9-d79f-4d0b-8db3-7cddf1ab0754", "title": "Vuuiiviviviviii"}]
+
+
+// comments
+// {"_firestore": 
+// {"app": [FirebaseAppImpl],
+//  "databaseId": [Dt], 
+//  "settings": [wc]}, 
+//  "_snapshot": 
+//  {"docChanges": [[Object]],
+//   "docs": {"comparator": [Function anonymous],
+//    "keyedMap": [Un], "sortedSet": [Un]},
+//     "excludesMetadataChanges": false, 
+//     "fromCache": false,
+//     "mutatedKeys": {"comparator": [Function comparator], 
+//     "data": [Un]}, 
+//     "oldDocs": {"comparator": [Function anonymous], "keyedMap": [Un], "sortedSet": [Un]}, 
+//     "query": {"C": [_e], "D": [Array], "collectionGroup": null, "endAt": null, "explicitOrderBy": [Array], "filters": [Array], "limit": null, "limitType": "F", "path": [wt], "startAt": null}, 
+//     "syncStateChanged": true}, "_userDataWriter": {"firestore": [Object]}, "metadata": {"fromCache": false, "hasPendingWrites": false}, 
+//     "query": {"_query": {"C": [_e], "D": [Array], "collectionGroup": null, "endAt": null, "explicitOrderBy": [Array], "filters": [Array], "limit": null, "limitType": "F", "path": [wt], "startAt": null}, "converter": null, "firestore": [Object], "type": "query"}}
+
+
+// store
+{"auth": {"error": null, "isAuth": true, "loading": false, "name": "Kosha2", "uid": "CYlL2fISpYdb5YJnROBW1DgSHZx2", "user": "k2@gmail.com"},
+ "comments": {"comments": [[Object], [Object], [Object], [Object], [Object], [Object]], "error": null, "loading": false},
+  "posts": {"error": null, "loading": false, "posts": [[Object], [Object], [Object], [Object], [Object], [Object]]}}
+
+  {"auth": {"error": null, "isAuth": true, "loading": false, "name": "Kosha2", "uid": "CYlL2fISpYdb5YJnROBW1DgSHZx2", "user": "k2@gmail.com"},
+   "comments": {"comments": [[Object], [Object], [Object], [Object]], "error": null, "loading": false}, "posts": {"error": null, "loading": false,
+    "posts": [[Object], [Object], [Object], [Object]]}}
+
+
+    [{"id": "30VaneYQcOpJ2CcjxRQs", "inputRegion": "Україна, Полтава", "location": {"latitude": 49.5780623, "longitude": 34.5156757}, "photo": "https://firebasestorage.googleapis.com/v0/b/postsapp-7dee3.appspot.com/o/1680442394873?alt=media&token=549b41c2-d823-4874-889d-2569bf4235ba", "title": "Komp", "uid": "CYlL2fISpYdb5YJnROBW1DgSHZx2"}, 
+    {"id": "5l1624M36xYUOIOVoRVO", "inputRegion": "Україна, Полтава", "location": {"latitude": 49.5780365, "longitude": 34.5156804}, "photo": "https://firebasestorage.googleapis.com/v0/b/postsapp-7dee3.appspot.com/o/1680442031148?alt=media&token=8739c865-bf6b-4591-a029-92a83b9f9056", "title": "Srach", "uid": "CYlL2fISpYdb5YJnROBW1DgSHZx2"}, 
+    {"id": "MDEm7cnWApL84fIjzy0V", "inputRegion": "Україна, Полтава", "location": {"latitude": 49.5780614, "longitude": 34.5156784}, "photo": "https://firebasestorage.googleapis.com/v0/b/postsapp-7dee3.appspot.com/o/1680441797443?alt=media&token=b02737ad-699a-4c62-ba3d-f98011996934", "title": "Homka", "uid": "CYlL2fISpYdb5YJnROBW1DgSHZx2"}, 
+    {"id": "PQqJJHDZ7K74I8a7hyQy", "inputRegion": "Україна, Полтава", "location": {"latitude": 49.5780613, "longitude": 34.5156793}, "photo": "https://firebasestorage.googleapis.com/v0/b/postsapp-7dee3.appspot.com/o/1680465525670?alt=media&token=66d72099-5e84-4a55-9d5b-b2d686f10035", "title": "Movie", "uid": "CYlL2fISpYdb5YJnROBW1DgSHZx2"}, 
+    {"id": "u4FfFx0vfV7S78gdKH0I", "inputRegion": "Україна, Полтава", "location": {"latitude": 49.5780598, "longitude": 34.5156795}, "photo": "https://firebasestorage.googleapis.com/v0/b/postsapp-7dee3.appspot.com/o/1680441437667?alt=media&token=5c467a8e-29a7-4f5a-8adf-e072ebc15d9e", "title": "Musha", "uid": "CYlL2fISpYdb5YJnROBW1DgSHZx2"}, 
+    {"id": "yvbdbS1O3rWXnlf5NW2N", "inputRegion": "Україна, Полтава", "location": {"latitude": 49.5780332, "longitude": 34.5156815}, "photo": "https://firebasestorage.googleapis.com/v0/b/postsapp-7dee3.appspot.com/o/1680442467703?alt=media&token=b24bf486-ef37-47f5-b753-f0a52a7c6836", "title": "Piano", "uid": "CYlL2fISpYdb5YJnROBW1DgSHZx2"}]

@@ -2,9 +2,8 @@
   "expo": {
     "name": "react-native-app",
     "slug": "react-native-app",
-    "description": "react-native project ",
     "version": "1.0.0",
-    "orientation": "default",
+    "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -17,24 +16,16 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.v.misha.panivnyk"
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      },
-      "package": "com.v.misha.panivnyk"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "02f88a70-3abd-49d0-90fd-76c2dd4f6da1"
-      }
-    },
-    "owner": "msha07"
+    }
   }
 }
